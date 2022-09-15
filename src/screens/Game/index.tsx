@@ -1,4 +1,4 @@
-import { View, TouchableOpacity, Image, FlatList } from "react-native";
+import { View, TouchableOpacity, Image, FlatList, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import { Entypo } from "@expo/vector-icons";
@@ -66,7 +66,12 @@ export function Game() {
           showsHorizontalScrollIndicator={false}
           horizontal
           style={styles.containerList}
-          contentContainerStyle={styles.contentList}
+          contentContainerStyle={[ads.length > 0 ? styles.contentList : styles.emptyListContainer]}
+          ListEmptyComponent={() => (
+            <Text style={styles.emptyListText}>
+              Não há anúncios publicados ainda.
+            </Text>
+          )}
         />
         
       </SafeAreaView>
